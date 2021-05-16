@@ -50,48 +50,28 @@ $('.button-plus').click(function () {
                 counter++;
                 localStorage.setItem("counter", counter);
                 $('.basketIcon').text(counter);
-
-                $('.quantity-field').val(counter)[0];
-                console.log($('.quantity-field').val(counter))
                 
     //Ajout produit au panier
+    //on recupere id specifique pour produit clique
     let idProdutClicked = $(this).attr('id')
-   
-     //NE FONCTIONNE PAS
+   // on trouve index du produit clique dans le panier
      let basketProductIndex = basketProducts.findIndex((basketProduct)=>{
       return  basketProduct.id === idProdutClicked;
     });
-
+// si le produit existe dans le panier , on augmente sa quantité et on termine le traitement avec return
     if(basketProductIndex > -1) {
       basketProducts[basketProductIndex].quantity++;
       localStorage.setItem("basketProducts", JSON.stringify(basketProducts)); 
       return
     } 
-
+// dans le cas ou le produit n existe pas dans le panier , on le cherche avec fct getproductbyid
       let product = getProductById(idProdutClicked);
+      // on ajoute la quantity car elle est initialise a 0
       product.quantity++
       basketProducts.push(product)
       // saauvgarder la liste mise a jour
       localStorage.setItem("basketProducts", JSON.stringify(basketProducts));
-      console.log(basketProducts)
- 
-  //   for(var item in basketProducts) {
-  //     // si le nom du produit est dans le panier , la quantité est augmenté, on eneregiste le panier
-  //    if(basketProducts[item].id === idProdutClicked) {
-  //      basketProducts[item].quantity ++;
-  //     // saauvgarder la liste mise a jour
-  //      localStorage.setItem("basketProducts", JSON.stringify(basketProducts));
-  //      return;
-  //    }
-  //  }
- 
-  //  let product = getProductById(idProdutClicked);
-  //   basketProducts.push(product)
-  //   // saauvgarder la liste mise a jour
-  //   localStorage.setItem("basketProducts", JSON.stringify(basketProducts));
-  //   console.log(basketProducts)
-
-    
+      console.log(basketProducts)  
         });
 
 $('.button-minus').click(function () { 
@@ -127,6 +107,4 @@ if (basketProductIndex > -1) {
         return productFound;
     }
   
-
-
 })
