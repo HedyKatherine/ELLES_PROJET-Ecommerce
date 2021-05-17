@@ -40,7 +40,7 @@ $(function() {
  
    function calculatTotalPriceAndDisplay() {
     let total = calculTotalPrice();
-    displayPrice(total);
+    displayPrice(total + " €");
     addRemoveProductListeners()
    }
 
@@ -69,6 +69,7 @@ function addRemoveProductListeners(){
  }
 //La fonction qui supprime les produits du panier
 function removeBasketProduct(event){
+  
   var buttonClicked = event.target
   // on recupere le data-id qui represente l id du produit cliqué
   let productId = $(buttonClicked).attr("data-id")
@@ -87,7 +88,6 @@ function removeBasketProduct(event){
     localStorage.setItem("basketProducts", JSON.stringify(basketProducts));
   }
 
-  
   calculatTotalPriceAndDisplay()
   //remove graphique
   buttonClicked.parentElement.parentElement.remove()
