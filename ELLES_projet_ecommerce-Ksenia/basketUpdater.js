@@ -89,29 +89,17 @@ $('.button-minus').click(function () {
 // si l index du produit existe dans la basketproduct, on supprime le produit
 // si la quantity de l index du produit est > 1 , faut diminuer la quantite, else faire le splice
 if (basketProductIndex > -1) {
+  let quantity = basketProducts[basketProductIndex].quantity
+  basketProducts[basketProductIndex].quantity--;
+  // si quantite de produit est inferieur ou egal a 1, on supprime le produit
+  if (quantity <= 1) {
+    basketProducts.splice(basketProductIndex, 1);
+  }
 
-  if (basketProducts[basketProductIndex].quantity > 1) {
-    basketProducts[basketProductIndex].quantity--;
-    console.log("la nouvlle quantité si sup à 1")
-    console.log(basketProducts)
-    //sauvgarde la liste mise a jour
+     //sauvgarde la liste mise a jour
     localStorage.setItem("basketProducts", JSON.stringify(basketProducts));
     computeTotalQuantityAndDisplay()
-  }else{
-    basketProducts[basketProductIndex].quantity--;
-    basketProducts.splice(basketProductIndex, 1);
-    console.log("la nouvlle liste apres suppression")
-    console.log(basketProducts)
-     //sauvgarde la liste mise a jour
-  localStorage.setItem("basketProducts", JSON.stringify(basketProducts));
-  computeTotalQuantityAndDisplay()
-  }
-  
- 
-  
-  // console.log('computeTotalQuantityAndDisplay')
- 
-}
+ }
 
     });
         
