@@ -2,6 +2,35 @@
 <html lang="en">
   <head>
     <title>ELLES</title>
+
+<!-- FONCTION BAR DE RECHERCHE -->
+       <script type="text/javascript">
+              function sendToPage(){
+                  var input = document.getElementById("search").value;
+                   //alert(input);
+                  if (input.toLowerCase() == "robe" || input == "T-shirt" || input == "chemise" || input == "top" || input == "haut" || input == "pull"){
+                      location.href = "ELLES_projet_ecommerce-Ksenia/tops.html";
+                      return false;
+                  }
+                  else if (input.toLowerCase() == "jeans" || input == "jean" || input == "pantalon" || input == "pantalons"){
+                      location.href = "ELLES_projet_ecommerce-Ksenia/jeans.html";
+                      return false;
+                  }
+                  else if (input.toLowerCase() == "accessoire" || input == "accessoires" || input == "sac" || input == "lunette" || input == "lunettes" || input == "masque"){
+                      location.href = "ELLES_projet_ecommerce-Ksenia/accesoires.html";
+                      return false;
+                  }
+                  else if (input.toLowerCase() == "chaussure" || input == "chaussures"  || input == "talon" || input == "talons" || input == "escarpin" || input == "basket" || input == "converse"){
+                      location.href = "ELLES_projet_ecommerce-Ksenia/chaussures.html";
+                      return false;
+                  }
+                  else {
+                      alert('Cet article est indisponible.');
+                  }
+                      }
+          </script>
+<!-- FONCTION BAR DE RECHERCHE -->
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,9 +69,23 @@
                         <li class="nav-item"><a href="#accueil" class="nav-link px-4 text-uppercase">Accueil</a></li>
                         <li class="nav-item"><a href="#article" class="nav-link  px-4 text-uppercase">Articles</a></li>
                         <li class="nav-item"><a href="ELLES_projet_ecommerce-Ksenia/panier.html" class="nav-link px-4 text-uppercase">Panier</a></li>
-                        <li class="nav-item"><a href="#contact" class="nav-link  px-4 text-uppercase">Contact</a></li>     
+                        <li class="nav-item"><a href="#contact" class="nav-link  px-4 text-uppercase">Contact</a></li>
                     </ul>
                 </div>
+
+                <!-- SEARCH BAR -->
+                <div class="searchBar">
+                  <div class="input-group col-xs-2">
+                    <input type="text" class="form-control col-xs-2" id="search" placeholder="Rechercher..." value="">
+                    <div class="input-group-append col-xs-2">
+                      <button class="btn btn-secondary" type="button" onclick="sendToPage();">
+                        <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- SEARCH BAR -->
+                
             </div>
         </nav>
     </div>
@@ -95,7 +138,7 @@
 </header>
 
 <!-- Articles -->
-<section class="m-5" id="article"> 
+<section class="m-5" id="article">
   <div class="card-deck ">
     <div class="card  text-white">
       <img src="images/accesoires/pexels-artem-beliaikin-1100779.jpg" class="card-img" alt="..." >
@@ -128,7 +171,7 @@
 
 <footer class="bg-dark p-3" id="contact">
   <div class="container text-center text-light">
-    
+
       <a href="#" target="_blank"> <i class="fa fa-facebook fa-2x mx-2 mx-lg-4" aria-hidden="true"></i> </a>
       <a href="#" target="_blank"><i class="fa fa-instagram fa-2x mx-2 mx-lg-4"></i> </a>
       <a href="#" target="_blank"><i class="fa fa-twitter fa-2x mx-2 mx-lg-4"></i></a>
@@ -139,8 +182,8 @@
         <p> <i class="fa fa-envelope-square" aria-hidden="true"></i> : elles-bout@contacts.fr</p>
         <p><i class="fa fa-phone" aria-hidden="true"></i> : 06 10 10 19 09</p>
     </div>
-      
-     
+
+
   </div>
 </footer>
     <!-- Optional JavaScript -->
