@@ -38,7 +38,7 @@ jeansSkinny,jeansBlack, jeansBlue, jeansHoley, jeansHigh, jeansGray, topBlack, s
       let basketProducts = [];
 
       if(localStorage.getItem("basketProducts") != null){
-        basketProducts =  JSON.parse(localStorage.getItem("basketProducts"));
+        basketProducts =  JSON.stringify(localStorage.getItem("basketProducts"));
       }     
 
       if(localStorage.getItem("counter") != null){
@@ -66,6 +66,7 @@ $('.button-plus').click(function () {
     } 
 // dans le cas ou le produit n existe pas dans le panier , on le cherche avec fct getproductbyid
       let product = getProductById(idProdutClicked);
+     
       // on ajoute la quantity car elle est initialise a 0
       product.quantity++
       basketProducts.push(product)
@@ -106,5 +107,45 @@ if (basketProductIndex > -1) {
         var productFound = productList[productIndex];
         return productFound;
     }
+
+
+
+  var input = document.querySelector('.quantity-field');
+  console.log(input);
+  var btnminus = document.querySelector('.button-minus');
+  var btnplus = document.querySelector('.button-plus');
+  
+  console.log(input);
+if (input !== undefined && btnminus !== undefined && btnplus !== undefined && input !== null && btnminus !== null && btnplus !== null) {
+	
+	var min = Number(input.getAttribute('min'));
+	var max = Number(input.getAttribute('max'));
+	var step = Number(input.getAttribute('step'));
+
+	function qtyminus(e) {
+		var current = Number(input.value);
+		var newval = (current - step);
+		if(newval < min) {
+			newval = min;
+		} else if(newval > max) {
+			newval = max;
+		} 
+		input.value = Number(newval);
+		e.preventDefault();
+	}
+
+	function qtyplus(e) {
+		var current = Number(input.value);
+		var newval = (current + step);
+		if(newval > max) newval = max;
+		input.value = Number(newval);
+		e.preventDefault();
+	}
+		
+	btnminus.addEventListener('click', qtyminus);
+	btnplus.addEventListener('click', qtyplus);
+  
+}
   
 })
+
