@@ -1,21 +1,16 @@
 $(function() {
 
   let basketProducts = [];
-  // counteur de totalités de produits ajoutés
-  var counter = 0;
+  
 
 //recupere le panier grace a storage
   if(localStorage.getItem("basketProducts") != null){
     basketProducts =  JSON.parse(localStorage.getItem("basketProducts"));
   } 
-  // recupere le counter depuis storage
-  if(localStorage.getItem("counter") != null){
-    counter =  localStorage.getItem("counter");
- } 
+ 
 //liste view
   listProductViewComponent = '';
   basketProducts.forEach( product =>
- 
     listProductViewComponent += `<tr> 
                        <td> 
                           <img src= ${product.pic} class="img-fluid w-50 d-block mx-auto" > 
@@ -37,6 +32,7 @@ $(function() {
  $('#productListViewId').html(listProductViewComponent)
 
  calculatTotalPriceAndDisplay()
+ computeTotalQuantityAndDisplay()
  
    function calculatTotalPriceAndDisplay() {
     let total = calculTotalPrice();
@@ -56,7 +52,25 @@ $(function() {
     $('#total').html(value)
     console.log(value)
    }
+
+   function computeTotalQuantityAndDisplay() {
+    let totalQuantity = computeTotalQuantity();
+    displayTotalQuantity(totalQuantity);
+    console.log("computeTotalQuantityAndDisplayFetcher")
+   }
  
+   function computeTotalQuantity() {
+     let totalQuantity = 0
+     basketProducts.forEach( product =>
+      totalQuantity = totalQuantity + product.quantity
+      )
+      return  totalQuantity
+   }
+   function displayTotalQuantity(value) {
+    $('.basketIcon').html(value)
+    console.log(value)
+   }
+   
 
 function addRemoveProductListeners(){
   //ON cible le button avec le classe "btn-danger" pour supprimer les produits
@@ -79,12 +93,10 @@ function removeBasketProduct(event){
   });
 
   if(index > -1){
-// on met a jour le conteur de la quantité total du produit
-    counter = counter - basketProducts[index].quantity
     // on supprime le produit selectionne de la liste
     basketProducts.splice(index, 1)
-// mettre a jour le storage pour que les autres paye ayent les meme quantité 
-    localStorage.setItem("counter", counter)
+    // on met a jour le conteur de la quantité total du produit
+    computeTotalQuantityAndDisplay()
     localStorage.setItem("basketProducts", JSON.stringify(basketProducts));
   }
 
@@ -93,6 +105,7 @@ function removeBasketProduct(event){
   buttonClicked.parentElement.parentElement.remove()
 
 }
+
   })
 
  
