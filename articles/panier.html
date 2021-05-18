@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>ELLES</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cardo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cardo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e206f53c0e.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <header>
+    <div id="accueil">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <div class="container">
+              <div class="icontext mr-5" style="max-width: 500px;">
+                <span class="icon icon-sm ">
+                  <a href="panier.html"><i class="fa fa-shopping-cart text-light"></i></a>
+                  <span class="notify text-light basketIcon"></span>
+                </span>
+              </div>
+                <a href="#" class="navbar-brand"> <h3 class="logoElles">Elles</h3></a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#Navbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="Navbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a href="..//index.html" class="nav-link px-4 text-uppercase">Accueil</a></li>
+                        <li class="nav-item"><a href="..//index.html#article" class="nav-link  px-4 text-uppercase">Articles</a></li>
+                        <li class="nav-item"><a href="#contact" class="nav-link  px-4 text-uppercase">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- SEARCH BAR -->
+                <div class="searchBar">
+                  <div class="input-group col-xs-2">
+                    <input type="text" class="form-control col-xs-2" id="search" placeholder="Rechercher..." value="">
+                    <div class="input-group-append col-xs-2">
+                      <button class="btn btn-secondary" type="button" onclick="sendToPage();">
+                        <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- SEARCH BAR -->                
+            </div>
+        </nav>
+    </div>
+  </header>
+    <!-- SHOPPING CART -->
+    <h1>Panier</h1>
+    <div class="container">
+      <div class="row">
+        <aside class="col-lg-9">
+      <div class="card">
+      <div class="table-responsive">
+      <table class="table table-borderless table-shopping-cart mt-3">
+      <thead class="text-muted">
+      <tr class="small text-uppercase text-center">
+        <th >Produit</th>
+        <th  width="120">Nom</th>
+        <th  width="120">Prix</th>
+        <th  width="120">Quantité</th>
+      </tr>
+      </thead>
+      <tbody id="productListViewId">
+      </tbody>
+      </table>
+
+      </div> <!-- table-responsive.// -->
+
+      <div class="card-body border-top">
+        <p class="icontext"><i class="icon text-success fa fa-truck"></i> Livraison gratuite sous 1 à 2 semaines</p>
+      </div> <!-- card-body.// -->
+
+      </div> <!-- card.// -->
+
+        </aside> <!-- col.// -->
+        <aside class="col-lg-3 mt-5">
+      <div class="card mt-5">
+      <div class="card-body">
+          <dl class="dlist-align">
+            <dt>Total price:</dt>
+            <dd class="text-right" id="total"></dd>
+          </dl>
+          <hr>
+          <p class="text-center mb-3">
+          </p>
+          <a href="#" class="btn btn-primary btn-block"> Valider </a>
+          <a href="..//index.html#article" class="btn btn-light btn-block">Continuez votre Shopping</a>
+      </div>
+      </div>
+
+        </aside>
+      </div>
+
+    </div>
+
+
+<footer class="bg-dark p-3" id="contact">
+  <div class="container text-center text-light">
+
+      <a href="#" target="_blank"> <i class="fa fa-facebook fa-2x mx-4" aria-hidden="true"></i> </a>
+      <a href="#" target="_blank"><i class="fa fa-instagram fa-2x mx-4"></i> </a>
+      <a href="#" target="_blank"><i class="fa fa-twitter fa-2x mx-4"></i></a>
+      <a href="#" target="_blank"><i class="fa fa-pinterest fa-2x mx-4"></i></a>
+      <a href="#" target="_blank"><i class="fa fa-youtube fa-2x mx-4"></i></a>
+      <div class="d-flex flex-column justify-content-center mt-3 text-light">
+        <p> <i class="fa fa-map-marker" aria-hidden="true"></i> : 40 RUE AFLA TOUNE 75001 PARIS</p>
+        <p> <i class="fa fa-envelope-square" aria-hidden="true"></i> : elles-bout@contacts.fr</p>
+        <p><i class="fa fa-phone" aria-hidden="true"></i> : 06 10 10 19 09</p>
+    </div>
+  </div>
+</footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"
+  ></script>
+
+  <script src="../basketFetcher.js"></script>
+
+  </body>
+</html>

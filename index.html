@@ -2,35 +2,33 @@
 <html lang="en">
   <head>
     <title>ELLES</title>
-
-<!-- FONCTION BAR DE RECHERCHE -->
-       <script type="text/javascript">
-              function sendToPage(){
-                  var input = document.getElementById("search").value;
-                   //alert(input);
-                  if (input.toLowerCase() == "robe" || input == "T-shirt" || input == "chemise" || input == "top" || input == "haut" || input == "pull"){
-                      location.href = "ELLES_projet_ecommerce-Ksenia/tops.html";
-                      return false;
-                  }
-                  else if (input.toLowerCase() == "jeans" || input == "jean" || input == "pantalon" || input == "pantalons"){
-                      location.href = "ELLES_projet_ecommerce-Ksenia/jeans.html";
-                      return false;
-                  }
-                  else if (input.toLowerCase() == "accessoire" || input == "accessoires" || input == "sac" || input == "lunette" || input == "lunettes" || input == "masque"){
-                      location.href = "ELLES_projet_ecommerce-Ksenia/accesoires.html";
-                      return false;
-                  }
-                  else if (input.toLowerCase() == "chaussure" || input == "chaussures"  || input == "talon" || input == "talons" || input == "escarpin" || input == "basket" || input == "converse"){
-                      location.href = "ELLES_projet_ecommerce-Ksenia/chaussures.html";
-                      return false;
-                  }
-                  else {
-                      alert('Cet article est indisponible.');
-                  }
+    <!-- FONCTION BAR DE RECHERCHE -->
+           <script type="text/javascript">
+                  function sendToPage(){
+                      var input = document.getElementById("search").value;
+                       //alert(input);
+                      if (input.toLowerCase() == "robe" || input == "T-shirt" || input == "chemise" || input == "top" || input == "haut" || input == "pull"){
+                          location.href = "articles/tops.html";
+                          return false;
                       }
-          </script>
-<!-- FONCTION BAR DE RECHERCHE -->
-
+                      else if (input.toLowerCase() == "jeans" || input == "jean" || input == "pantalon" || input == "pantalons"){
+                          location.href = "articles/jeans.html";
+                          return false;
+                      }
+                      else if (input.toLowerCase() == "accessoire" || input == "accessoires" || input == "sac" || input == "lunette" || input == "lunettes" || input == "masque"){
+                          location.href = "articles/accesoires.html";
+                          return false;
+                      }
+                      else if (input.toLowerCase() == "chaussure" || input == "chaussures"  || input == "talon" || input == "talons" || input == "escarpin" || input == "basket" || input == "converse"){
+                          location.href = "articles/chaussures.html";
+                          return false;
+                      }
+                      else {
+                          alert('Cet article est indisponible.');
+                      }
+                          }
+              </script>
+    <!-- FONCTION BAR DE RECHERCHE -->
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -55,7 +53,7 @@
             <div class="container">
               <div class="icontext mr-5" style="max-width: 500px;">
                 <span class="icon icon-sm ">
-                  <i class="fa fa-shopping-cart text-light"></i>
+                  <a href="articles/panier.html"><i class="fa fa-shopping-cart text-light"></i></a>
                   <span class="notify text-light basketIcon"></span>
                 </span>
               </div>
@@ -68,11 +66,9 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a href="#accueil" class="nav-link px-4 text-uppercase">Accueil</a></li>
                         <li class="nav-item"><a href="#article" class="nav-link  px-4 text-uppercase">Articles</a></li>
-                        <li class="nav-item"><a href="ELLES_projet_ecommerce-Ksenia/panier.html" class="nav-link px-4 text-uppercase">Panier</a></li>
                         <li class="nav-item"><a href="#contact" class="nav-link  px-4 text-uppercase">Contact</a></li>
                     </ul>
                 </div>
-
                 <!-- SEARCH BAR -->
                 <div class="searchBar">
                   <div class="input-group col-xs-2">
@@ -85,7 +81,6 @@
                   </div>
                 </div>
                 <!-- SEARCH BAR -->
-                
             </div>
         </nav>
     </div>
@@ -143,13 +138,13 @@
     <div class="card  text-white">
       <img src="images/accesoires/pexels-artem-beliaikin-1100779.jpg" class="card-img" alt="..." >
       <div class="card-img-overlay">
-       <a href="ELLES_projet_ecommerce-Ksenia/accesoires.html"> <h5 class="card-title text-dark">Voir les accesoires</h5></a>
+       <a href="articles/accesoires.html"> <h5 class="card-title text-dark">Voir les accesoires</h5></a>
       </div>
     </div>
     <div class="card  text-white">
       <img src="images/chaussures/camila-damasio-mWYhrOiAgmA-unsplash.jpg" class="card-img" alt="...">
       <div class="card-img-overlay">
-       <a href="ELLES_projet_ecommerce-Ksenia/chaussures.html"> <h5 class="card-title text-dark">Voir les chaussures</h5></a>
+       <a href="articles/chaussures.html"> <h5 class="card-title text-dark">Voir les chaussures</h5></a>
       </div>
     </div>
   </div>
@@ -157,13 +152,13 @@
     <div class="card  text-white">
       <img src="images/jeans/pexels-ava-motive-1034859.jpg" class="card-img" alt="..." >
       <div class="card-img-overlay">
-        <a href="ELLES_projet_ecommerce-Ksenia/jeans.html"><h5 class="card-title text-dark">Voir les jeans</h5></a>
+        <a href="articles/jeans.html"><h5 class="card-title text-dark">Voir les jeans</h5></a>
       </div>
     </div>
     <div class="card  text-white">
       <img src="images/top/tamara-bellis-avYD_iPH_c4-unsplash.jpg" class="card-img" alt="...">
       <div class="card-img-overlay">
-        <a href="ELLES_projet_ecommerce-Ksenia/tops.html"><h5 class="card-title text-dark">Voir les tops</h5></a>
+        <a href="articles/tops.html"><h5 class="card-title text-dark">Voir les tops</h5></a>
       </div>
     </div>
   </div>
@@ -196,7 +191,7 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
     crossorigin="anonymous"
   ></script>
-  <script src="ELLES_projet_ecommerce-Ksenia/basketUpdater.js"></script>
-  <script src="ELLES_projet_ecommerce-Ksenia/models.js"></script>
+  <script src="articles/basketUpdater.js"></script>
+  <script src="articles/models.js"></script>
   </body>
 </html>

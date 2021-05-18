@@ -31,9 +31,11 @@ body{
     font-family: 'Monsieur La Doulaise', cursive;
     font-size: 30px;
 }
+
 .searchBar{
      width: 25%;
 };
+
 /*==================RESPONSIVES==================*/
 /* @media (max-width: 600px) {
     header .carousel-inner .carousel-item{
