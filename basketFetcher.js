@@ -49,7 +49,10 @@ $(function() {
     basketProducts.forEach( product =>
       total = total + (product.quantity * product.price)
       )
-     return  Math.round(total)
+//     return  Math.round(total)
+       return (total.toFixed(2));  // renvoie 2 chiffres après la virgule
+//     return ((parseInt(total * 100)) / 100);
+//     return (Math.floor(total * 100) / 100);
    }
 
    function displayPrice(value) {
