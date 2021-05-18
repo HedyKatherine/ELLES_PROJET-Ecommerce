@@ -31,26 +31,19 @@ const topMulticolored = new Product('images/top/romane-gautun-p4skZXXOD3Q-unspla
 var productList = [bagPink, bagGray, mask_earrings, bagGucci, bagStraw, glasses, heelBlack, sneakersPink, sneakersBlack, heelBeige, heelGray, sneakersMulticolored, 
 jeansSkinny,jeansBlack, jeansBlue, jeansHoley, jeansHigh, jeansGray, topBlack, sweaterRed, dressGreen, dressBlack, topStriped, topMulticolored]
 
-      //incrementer le total de icon panier
-      var counter = 0;
 
       //creer une liste de basket
       let basketProducts = [];
 
       if(localStorage.getItem("basketProducts") != null){
         basketProducts =  JSON.parse(localStorage.getItem("basketProducts"));
+        computeTotalQuantityAndDisplay()
       }     
-
-      if(localStorage.getItem("counter") != null){
-             counter =  localStorage.getItem("counter");
-      } 
       
     
 $('.button-plus').click(function () { 
-                counter++;
-                localStorage.setItem("counter", counter);
-                $('.basketIcon').text(counter);
-                
+                computeTotalQuantityAndDisplay()
+
     //Ajout produit au panier
     //on recupere id specifique pour produit clique
     let idProdutClicked = $(this).attr('id')
@@ -58,28 +51,34 @@ $('.button-plus').click(function () {
      let basketProductIndex = basketProducts.findIndex((basketProduct)=>{
       return  basketProduct.id === idProdutClicked;
     });
+    
 // si le produit existe dans le panier , on augmente sa quantité et on termine le traitement avec return
     if(basketProductIndex > -1) {
       basketProducts[basketProductIndex].quantity++;
       localStorage.setItem("basketProducts", JSON.stringify(basketProducts)); 
+      computeTotalQuantityAndDisplay()
       return
     } 
 // dans le cas ou le produit n existe pas dans le panier , on le cherche avec fct getproductbyid
       let product = getProductById(idProdutClicked);
       // on ajoute la quantity car elle est initialise a 0
+      console.log(product)            
       product.quantity++
       basketProducts.push(product)
       // saauvgarder la liste mise a jour
       localStorage.setItem("basketProducts", JSON.stringify(basketProducts));
-      console.log(basketProducts)  
+      computeTotalQuantityAndDisplay()
+      
         });
 
 $('.button-minus').click(function () { 
-            if (counter > 0) {
-                counter--;
-                localStorage.setItem("counter", counter);
-                $('.basketIcon').text(counter);
-            }
+            // if (counter > 0) {
+            //     counter--;
+            //     // console.log(counter)
+            //     localStorage.setItem("counter", counter);
+            //     $('.basketIcon').text(counter);
+            // }
+            
  //Ajout produit au panier
  let idProdutClicked = $(this).attr('id')
  
@@ -87,17 +86,36 @@ $('.button-minus').click(function () {
  let basketProductIndex = basketProducts.findIndex((basketProduct)=>{
   return  basketProduct.id === idProdutClicked;
 });
-// si l index du produit existe dans la basketproduct, on supprime
+// si l index du produit existe dans la basketproduct, on supprime le produit
+// si la quantity de l index du produit est > 1 , faut diminuer la quantite, else faire le splice
 if (basketProductIndex > -1) {
-  basketProducts.splice(basketProductIndex, 1);
-  //sauvgarde la liste mise a jour
-  localStorage.setItem("basketProducts", basketProducts);
- console.log(basketProducts)
+
+  if (basketProducts[basketProductIndex].quantity > 1) {
+    basketProducts[basketProductIndex].quantity--;
+    console.log("la nouvlle quantité si sup à 1")
+    console.log(basketProducts)
+    //sauvgarde la liste mise a jour
+    localStorage.setItem("basketProducts", JSON.stringify(basketProducts));
+    computeTotalQuantityAndDisplay()
+  }else{
+    basketProducts[basketProductIndex].quantity--;
+    basketProducts.splice(basketProductIndex, 1);
+    console.log("la nouvlle liste apres suppression")
+    console.log(basketProducts)
+     //sauvgarde la liste mise a jour
+  localStorage.setItem("basketProducts", JSON.stringify(basketProducts));
+  computeTotalQuantityAndDisplay()
+  }
+  
+ 
+  
+  // console.log('computeTotalQuantityAndDisplay')
+ 
 }
 
     });
         
-    $('.basketIcon').text(counter);
+    
   // fonction getProductById  
     function getProductById(id) {
         let productIndex = productList.findIndex((product)=>{
@@ -106,5 +124,22 @@ if (basketProductIndex > -1) {
         var productFound = productList[productIndex];
         return productFound;
     }
+
+
+function computeTotalQuantityAndDisplay() {
+  let totalQuantity = computeTotalQuantity();
+  displayTotalQuantity(totalQuantity);
+ }
+
+ function computeTotalQuantity() {
+   let totalQuantity = 0
+   basketProducts.forEach( product =>
+    totalQuantity = totalQuantity + product.quantity
+    )
+    return  totalQuantity
+ }
+ function displayTotalQuantity(value) {
+  $('.basketIcon').html(value)
+ }
   
 })
