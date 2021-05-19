@@ -72,7 +72,7 @@ $('.button-plus').click(function () {
       basketProducts.push(product)
       // saauvgarder la liste mise a jour
       localStorage.setItem("basketProducts", JSON.stringify(basketProducts));
-      console.log(basketProducts)  
+      // console.log(basketProducts)  
         });
 
 $('.button-minus').click(function () { 
@@ -93,7 +93,7 @@ if (basketProductIndex > -1) {
   basketProducts.splice(basketProductIndex, 1);
   //sauvgarde la liste mise a jour
   localStorage.setItem("basketProducts", basketProducts);
- console.log(basketProducts)
+//  console.log(basketProducts)
 }
 
     });
@@ -101,7 +101,7 @@ if (basketProductIndex > -1) {
     $('.basketIcon').text(counter);
   // fonction getProductById  
     function getProductById(id) {
-        let productIndex = productList.findIndex((product)=>{
+        var productIndex = productList.findIndex((product)=>{
             return  product.id === id;
         });
         var productFound = productList[productIndex];
@@ -109,43 +109,19 @@ if (basketProductIndex > -1) {
     }
 
 
+  //Incrémenter et décrémenter le des articles boutons (-) et(+)
+  $('.button-plus').click(function(){
+    var target = $('.quantity-field', this.parentNode)[0];
+    target.value = +target.value + 1;
+    // console.log($('.quantity-field', this.parentNode)[0]);
+  })
 
-  var input = document.querySelector('.quantity-field');
-  console.log(input);
-  var btnminus = document.querySelector('.button-minus');
-  var btnplus = document.querySelector('.button-plus');
-  
-  console.log(input);
-if (input !== undefined && btnminus !== undefined && btnplus !== undefined && input !== null && btnminus !== null && btnplus !== null) {
-	
-	var min = Number(input.getAttribute('min'));
-	var max = Number(input.getAttribute('max'));
-	var step = Number(input.getAttribute('step'));
+  $('.button-minus').click(function(){
+    var target = $('.quantity-field', this.parentNode)[0];
+    if (target.value > 0) {
+      target.value = +target.value - 1;
+    }
+  })
 
-	function qtyminus(e) {
-		var current = Number(input.value);
-		var newval = (current - step);
-		if(newval < min) {
-			newval = min;
-		} else if(newval > max) {
-			newval = max;
-		} 
-		input.value = Number(newval);
-		e.preventDefault();
-	}
-
-	function qtyplus(e) {
-		var current = Number(input.value);
-		var newval = (current + step);
-		if(newval > max) newval = max;
-		input.value = Number(newval);
-		e.preventDefault();
-	}
-		
-	btnminus.addEventListener('click', qtyminus);
-	btnplus.addEventListener('click', qtyplus);
-  
-}
-  
 })
 
