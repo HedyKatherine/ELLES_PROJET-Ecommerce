@@ -109,6 +109,8 @@ function removeBasketProduct(event){
 
 }
 
+
+
   })
 
  

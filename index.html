@@ -30,7 +30,6 @@
                   <span class="notify text-light basketIcon"></span>
                 </span>
               </div>
-                <!-- <a href="#" class="navbar-brand"> <img src="images/logo.png" alt="" width="50px" > </a> -->
                 <a href="#" class="navbar-brand"> <h3 class="logoElles">Elles</h3></a>
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#Navbar">
                     <span class="navbar-toggler-icon"></span>
@@ -41,8 +40,22 @@
                         <li class="nav-item"><a href="#article" class="nav-link  px-4 text-uppercase">Articles</a></li>
                         <li class="nav-item"><a href="#contact" class="nav-link  px-4 text-uppercase">Contact</a></li>     
                     </ul>
+                            <!-- SEARCH BAR -->
+              <div class="searchBar">
+                <div class="input-group col-xs-2">
+                  <input type="text" class="form-control col-xs-2" id="search" placeholder="Rechercher..." value="">
+                  <div class="input-group-append col-xs-2">
+                    <button class="btn btn-secondary" type="button" id="searchBar" onclick="sendToPage()">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
                 </div>
+              </div>
+              <!-- SEARCH BAR -->
+                </div>
+                  
             </div>
+
         </nav>
     </div>
 <!-- Carousel -->
@@ -154,5 +167,6 @@
   ></script>
   <script src="articles/basketUpdater.js"></script>
   <script src="articles/models.js"></script>
+  <script src="script.js"></script>
   </body>
 </html>

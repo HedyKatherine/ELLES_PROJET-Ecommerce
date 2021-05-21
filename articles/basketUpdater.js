@@ -47,7 +47,7 @@ $('.button-plus').click(function () {
     //Ajout produit au panier
     //on recupere id specifique pour produit clique
     let idProdutClicked = $(this).attr('id')
-   // on trouve index du produit clique dans le panier
+   // ici on trouve index du produit cliqué dans le panier
      let basketProductIndex = basketProducts.findIndex((basketProduct)=>{
       return  basketProduct.id === idProdutClicked;
     });
@@ -59,7 +59,7 @@ $('.button-plus').click(function () {
       computeTotalQuantityAndDisplay()
       return
     } 
-// dans le cas ou le produit n existe pas dans le panier , on le cherche avec fct getproductbyid
+// dans le cas ou le produit n existe pas dans le panier , on le cherche avec fct getproductbyid et en passe dans le parametre idproductCli
       let product = getProductById(idProdutClicked);
       // on ajoute la quantity car elle est initialise a 0
       console.log(product)            
@@ -69,17 +69,11 @@ $('.button-plus').click(function () {
       localStorage.setItem("basketProducts", JSON.stringify(basketProducts));
       computeTotalQuantityAndDisplay()
       
+
         });
 
 $('.button-minus').click(function () { 
-            // if (counter > 0) {
-            //     counter--;
-            //     // console.log(counter)
-            //     localStorage.setItem("counter", counter);
-            //     $('.basketIcon').text(counter);
-            // }
-            
- //Ajout produit au panier
+     
  let idProdutClicked = $(this).attr('id')
  
  // on recupere le index du produit dans la basketproduct
@@ -118,7 +112,7 @@ function computeTotalQuantityAndDisplay() {
   let totalQuantity = computeTotalQuantity();
   displayTotalQuantity(totalQuantity);
  }
-
+//boucle sur la la baskeproduct pour calculer la quantité total ajoutés de produit dans le panier
  function computeTotalQuantity() {
    let totalQuantity = 0
    basketProducts.forEach( product =>
@@ -129,5 +123,57 @@ function computeTotalQuantityAndDisplay() {
  function displayTotalQuantity(value) {
   $('.basketIcon').html(value)
  }
+  
+
+  //Incrémenter et décrémenter le des articles boutons (-) et(+)
+  $('.button-plus').click(function(){
+    var target = $('.quantity-field', this.parentNode)[0];
+    target.value = +target.value + 1;
+    // console.log($('.quantity-field', this.parentNode)[0]);
+  })
+
+  $('.button-minus').click(function(){
+    var target = $('.quantity-field', this.parentNode)[0];
+    if (target.value > 0) {
+      target.value = +target.value - 1;
+    }
+  })
+
+  var inputs = document.getElementsByClassName('quantity-field')
+  for(var i = 0; i < inputs.length; i++){
+    for(var j = 0; j < basketProducts.length; j++){
+      console.log(inputs[i])
+
+      if(basketProducts[j].id == inputs[i].id){
+          inputs[i].value = basketProducts[j].quantity
+          console.log(basketProducts[j].quantity)
+      }
+    }}
+
+    window.addEventListener("pageshow", function(evt){
+      
+      if(localStorage.getItem("basketProducts") != null){
+        basketProducts =  JSON.parse(localStorage.getItem("basketProducts"));
+        computeTotalQuantityAndDisplay()
+      }     
+
+      var inputs = document.getElementsByClassName('quantity-field')
+      for(var i = 0; i < inputs.length; i++){
+        if(basketProducts.length == 0){
+          console.log("here" + basketProducts.length)
+          inputs[i].value = "0"
+        }
+        for(var j = 0; j < basketProducts.length; j++){
+          console.log(inputs[i])
+          if(basketProducts[j].id == inputs[i].id){
+              inputs[i].value = basketProducts[j].quantity
+              console.log(basketProducts[j].quantity)
+          } 
+        }}
+  }, false);
+    
+
+
+  
   
 })
